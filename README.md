@@ -1,1 +1,1 @@
-# FuzzyImageDiagnostics
+# Fuzzy_Image_Diagnostics
