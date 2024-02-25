@@ -1,4 +1,6 @@
 # Fuzzy_Image_Diagnostics
+  #Tool - 
+    1.Matlab
 
   #Libraries used - 
     1.fuzzycmeans
