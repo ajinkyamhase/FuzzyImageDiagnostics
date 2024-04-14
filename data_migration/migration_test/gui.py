@@ -11,7 +11,6 @@ from skimage.morphology import disk, opening
 from skimage import io, color
 import joblib
 import time
-
 import fuzzycmeans as fcm#main
 
 
