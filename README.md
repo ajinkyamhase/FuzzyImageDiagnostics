@@ -29,6 +29,7 @@
     1.Ajinkya Mhase - Project Management, Development.
     2.Manini Gupta - Development, Documentation.
     3.Rashi Agarwal - Development, Survey, Testing.
+    4.Harsh Kumar- Optimization and clean code tutor.
     
 
 
