@@ -14,7 +14,6 @@ from skimage.color import label2rgb
 import skfuzzy as fuzz
 import matplotlib.pyplot as plt
 
-
 class FuzzyMinMaxClassifier:
     def __init__(self, gamma=1.0, theta=0.1):
         self.gamma = gamma
@@ -51,8 +50,7 @@ class TumorDetectionApp:
         self.model_filename = "fuzzy_min_max_model.pkl"
         self.accuracy_filename = "accuracy_history.pkl"
         self.load_model()
-        #if 'accuracy_history' not in st.session_state:
-         #   st.session_state['accuracy_history'] = []
+
     def load_model(self):
         try:
             self.classifier = joblib.load(self.model_filename)
@@ -164,24 +162,16 @@ class TumorDetectionApp:
         # Convert to PIL image for display in Streamlit
         highlighted_img = Image.fromarray(highlighted_img)
         st.image(highlighted_img, caption='Highlighted Tumor Region', use_column_width=True)
-    '''def highlight_image(self, uploaded_file):
-        img = Image.open(uploaded_file).convert('L')
-        img_array = np.array(img)
-        thresh = threshold_otsu(img_array)
-        bw = opening(img_array > thresh, disk(2))
-        cleared = clear_border(bw)
-        label_image = label(cleared)
-        regions = regionprops(label_image)
-        for region in regions:
-            minr, minc, maxr, maxc = region.bbox
-            img_array[minr:maxr, minc:maxc] = 255
-        highlighted_img = Image.fromarray(img_array)
-        st.image(highlighted_img, caption='Highlighted Tumor Region', use_column_width=True)'''
 
     def run(self):
         st.title("Tumor Detection App")
+        redirect_link = st.sidebar.radio("Redirect", ["Med Ai"])
+        if redirect_link == "Med Ai":
+            if st.sidebar.button("Load Med Ai"):
+                st.markdown("[Med Ai Loaded](https://935e-14-139-109-7.ngrok-free.app/)")
         menu_choice = st.sidebar.radio("Menu", ["Load Yes Data", "Load No Data", "Train Classifier",
                                                 "Calculate Accuracy", "Classify and Highlight Image"])
+
         if menu_choice in ["Load Yes Data", "Load No Data"]:
             data_type = "Yes" if menu_choice == "Load Yes Data" else "No"
             uploaded_files = st.file_uploader(f"Upload {data_type} Images", accept_multiple_files=True, type=["jpg", "jpeg", "png"])
